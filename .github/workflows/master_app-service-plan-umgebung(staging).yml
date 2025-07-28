@@ -1,9 +1,9 @@
-name: Deploy static HTML app to Azure Web App
+name: Deploy static HTML site to Azure Web App
 
 on:
   push:
     branches:
-      - staging  # oder main, je nachdem was du benutzt
+      - staging  # Oder "main", je nachdem was du nutzt
 
 jobs:
   deploy:
@@ -16,7 +16,7 @@ jobs:
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v2
         with:
-          app-name: 'app-service-plan-umgebung'       # ← dein App Service Name
-          slot-name: 'staging'                         # ← dein Deployment Slot
+          app-name: 'app-service-plan-umgebung'       # DEIN Azure App Service Name
+          slot-name: 'staging'                         # Falls du Staging nutzt
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
           package: .
